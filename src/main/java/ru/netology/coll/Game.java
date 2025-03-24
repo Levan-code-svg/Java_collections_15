@@ -1,16 +1,22 @@
 package ru.netology.coll;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Game {
-    private final HashMap<String, Player> players = new HashMap<>();
+    private final ArrayList<Player> players = new ArrayList<>();
 
     public void register(Player player) {
-        players.put(player.getName(), player);
+        players.add(player);
     }
 
     private Player findByName(String name) {
-        return players.get(name);
+        for (Player player : players) {
+            if (Objects.equals(player.getName(), name)) {
+                return player;
+            }
+        }
+        return null;
     }
 
     public int round(String playerName1, String playerName2) {
